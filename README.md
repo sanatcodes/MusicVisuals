@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Name: Sanat Thukral
 
-Student Number: 
+Student Number: D18129674
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
