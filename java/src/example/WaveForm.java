@@ -16,9 +16,11 @@ public class WaveForm
 
     public void render()
     {
+        mv.noFill();
         mv.colorMode(PApplet.HSB);
         for(int i = 0 ; i < mv.getAudioBuffer().size() ; i ++)
         {
+            
             mv.stroke(
                 PApplet.map(i, 0, mv.getAudioBuffer().size(), 0, 255)
                 , 255
