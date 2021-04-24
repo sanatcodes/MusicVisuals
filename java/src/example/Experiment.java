@@ -1,12 +1,14 @@
 package example;
 
+import java.util.ArrayList;
+
 import processing.core.*;
 
 public class Experiment {
     MyVisual mv;
     float cy = 0;
     float cw = 0;
-    int which = 1;
+    int which = 2;
 
     public Experiment(MyVisual mv)
     {
@@ -52,7 +54,20 @@ public class Experiment {
         return PApplet.cos(t / 20) * 200 + PApplet.cos(t / 12) * 20;
     }
 
-    
+    //variales for visual 3
+    float x = 1 * 0.01f;
+    float y = 0;
+    float z = 0;
+
+    float a = 10;
+    float b = 28;
+    float c = 8/3;
+
+    float angle = 0;
+
+    ArrayList<PVector> points = new ArrayList<PVector>();
+
+
     public void render()
     {
 
@@ -85,7 +100,6 @@ public class Experiment {
                     mv.circle(cw, cy, cy + 50 + cy * mv.getAudioBuffer().get(i));
                 }
                 break;
-
             }
             
             case 1:
@@ -115,6 +129,43 @@ public class Experiment {
                 // t += 0.7;
             }
             break;
+
+            case 2: {
+                
+                float dt = 1 * 0.01f;
+                float dx = (a * (y - x)) * dt;
+                float dy = (x * (b - z) - y) * dt;
+                float dz = (x * y - c * z) * dt;
+
+                x = x + dx;
+                y = y + dy;
+                z = z + dz;
+
+                // mv.camera(0, 0, (mv.height/2) / (PApplet.tan(PApplet.PI/6)), 0, 0, 0, 0, 1, 0);
+
+                points.add(new PVector(x, y, z));
+
+                mv.translate(mv.width/2, mv.height/2);
+                mv.scale(4);
+                mv.stroke(255);
+                mv.noFill();
+
+                float color = 0;
+                mv.beginShape();
+                for(PVector v : points)
+                {
+                    mv.stroke((color % 255),255,255);
+                    mv.vertex(v.x, v.y, v.z);
+                    color += 1;
+                    // mv.rotateY(angle);
+                    // mv.rotateX(angle);
+    
+                }
+                // angle += 0.1f;
+                mv.endShape();
+
+
+            }
         }//end switch
 
     }//end render

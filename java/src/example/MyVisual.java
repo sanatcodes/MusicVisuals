@@ -10,7 +10,7 @@ public class MyVisual extends Visual
 
     public void settings()
     {
-        size(1024, 500);
+        size(1024, 500, P3D);
         
         // Use this to make fullscreen
         //fullScreen();
@@ -24,7 +24,8 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("heroplanet.mp3");   
+        loadAudio("heroplanet.mp3");  
+        colorMode(HSB); 
 
         
         // Call this instead to read audio from the microphone
@@ -33,6 +34,8 @@ public class MyVisual extends Visual
         // wf = new WaveForm(this);
         // abv = new AudioBandsVisual(this);
         ex = new Experiment(this);
+
+        // background(0);
     }
 
     public void keyPressed()
