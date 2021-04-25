@@ -8,7 +8,7 @@ public class Experiment {
     MyVisual mv;
     float cy = 0;
     float cw = 0;
-    int which = 2;
+    int which = 4;
 
     public Experiment(MyVisual mv)
     {
@@ -66,6 +66,12 @@ public class Experiment {
     float angle = 0;
 
     ArrayList<PVector> points = new ArrayList<PVector>();
+
+    Planet sun = new Planet(100,0);
+
+    //variales for 4th visual
+
+    float sphereSize;
 
 
     public void render()
@@ -131,7 +137,8 @@ public class Experiment {
             break;
 
             case 2: {
-                
+                mv.camera(mv.mouseX, mv.height/2, (mv.height/2) / PApplet.tan(PApplet.PI/6), mv.width/2, mv.height/2, 0, 0, 1, 0);
+
                 float dt = 1 * 0.01f;
                 float dx = (a * (y - x)) * dt;
                 float dy = (x * (b - z) - y) * dt;
@@ -163,11 +170,73 @@ public class Experiment {
                 }
                 // angle += 0.1f;
                 mv.endShape();
+                break;
 
 
+            }
+
+            case 3: 
+            {
+                mv.translate(mv.width/2, mv.height/2);
+                sun.show();
+                sun.spawnMoons(5);
+
+
+            }
+
+
+            case 4:
+            {
+                mv.camera(mv.mouseX, mv.height/2, (mv.height/2) / PApplet.tan(PApplet.PI/6), mv.width/2, mv.height/2, 0, 0, 1, 0);
+
+                mv.pushMatrix();
+                mv.translate(mv.width/2, mv.height/2, 0);
+                mv.stroke(255);
+                mv.rotateX(PApplet.PI/2);
+                mv.rotateZ(-PApplet.PI/6);
+                mv.noFill();
+
+                //make pyramid
+                mv.beginShape();
+                mv.vertex(-100, -100, -100);
+                mv.vertex( 100, -100, -100);
+                mv.vertex(   0,    0,  100);
+
+                mv.vertex( 100, -100, -100);
+                mv.vertex( 100,  100, -100);
+                mv.vertex(   0,    0,  100);
+
+                mv.vertex( 100, 100, -100);
+                mv.vertex(-100, 100, -100);
+                mv.vertex(   0,   0,  100);
+
+                mv.vertex(-100,  100, -100);
+                mv.vertex(-100, -100, -100);
+                mv.vertex(   0,    0,  100);
+                mv.endShape();
+
+                mv.popMatrix();
+
+                mv.pushMatrix();
+                mv.translate(mv.width/2, mv.height/2, 0);
+                for(int i = 0 ; i < (mv.getAudioBuffer().size() % 150) ; i ++)
+                {
+                    mv.noFill();
+                    mv.fill(
+                        PApplet.map(i, 0, mv.getAudioBuffer().size(), 0, 255)
+                        , 255
+                        , 255
+                    );
+                    sphereSize = PApplet.map(i,0,mv.getAudioBuffer().size(),10,90);
+                    mv.sphere(sphereSize);
+                }
+               
+                mv.popMatrix();
             }
         }//end switch
 
     }//end render
 
 }//end main class 
+
+
