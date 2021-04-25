@@ -63,7 +63,6 @@ public class Experiment {
     float b = 28;
     float c = 8/3;
 
-    float angle = 0;
 
     ArrayList<PVector> points = new ArrayList<PVector>();
 
@@ -72,7 +71,8 @@ public class Experiment {
     //variales for 4th visual
 
     float sphereSize;
-
+    boolean showCube = false;
+    float angle = 0;
 
     public void render()
     {
@@ -191,47 +191,92 @@ public class Experiment {
 
                 mv.pushMatrix();
                 mv.translate(mv.width/2, mv.height/2, 0);
-                mv.stroke(255);
+                mv.strokeWeight(3);
+                mv.stroke(30,255,255);
                 mv.rotateX(PApplet.PI/2);
                 mv.rotateZ(-PApplet.PI/6);
                 mv.noFill();
 
                 //make pyramid
                 mv.beginShape();
-                mv.vertex(-100, -100, -100);
-                mv.vertex( 100, -100, -100);
-                mv.vertex(   0,    0,  100);
+                mv.vertex( 150, -150, -150);
+                mv.vertex(-150, -150, -150);
+                mv.vertex(   0,    0,  150);
 
-                mv.vertex( 100, -100, -100);
-                mv.vertex( 100,  100, -100);
-                mv.vertex(   0,    0,  100);
+                mv.vertex( 150, -150, -150);
+                mv.vertex( 150,  150, -150);
+                mv.vertex(   0,    0,  150);
 
-                mv.vertex( 100, 100, -100);
-                mv.vertex(-100, 100, -100);
-                mv.vertex(   0,   0,  100);
+                mv.vertex( 150, 150, -150);
+                mv.vertex(-150, 150, -150);
+                mv.vertex(   0,   0,  150);
 
-                mv.vertex(-100,  100, -100);
-                mv.vertex(-100, -100, -100);
-                mv.vertex(   0,    0,  100);
+                mv.vertex(-150,  150, -150);
+                mv.vertex(-150, -150, -150);
+                mv.vertex(   0,    0,  150);
                 mv.endShape();
 
                 mv.popMatrix();
 
-                mv.pushMatrix();
-                mv.translate(mv.width/2, mv.height/2, 0);
-                for(int i = 0 ; i < (mv.getAudioBuffer().size() % 150) ; i ++)
+                mv .pushMatrix();
+                mv.translate(mv.width/2, mv.height/2 + 50, 0);
+                for(int i = 0 ; i < (mv.getAudioBuffer().size()) ; i ++)
                 {
-                    mv.noFill();
+                    mv.noStroke();
                     mv.fill(
                         PApplet.map(i, 0, mv.getAudioBuffer().size(), 0, 255)
                         , 255
                         , 255
                     );
-                    sphereSize = PApplet.map(i,0,mv.getAudioBuffer().size(),10,90);
-                    mv.sphere(sphereSize);
+                    // sphereSize = PApplet.map(mv.getAudioBuffer().get(i),0,mv.getAudioBuffer().size(),10,90);
+                    mv.sphere(170 * mv.getAudioBuffer().get(i));
+
+                    if(mv.getAudioBuffer().get(i) > 0.15)
+                    {
+                        showCube = true;
+                        // PApplet.println(mv.getAudioBuffer().get(i));
+                    }
+                    else
+                    {
+                        showCube = false;
+                    }
                 }
-               
                 mv.popMatrix();
+               
+                if(showCube == true)
+                {
+                    
+                    //right cube 
+                    mv.stroke(PApplet.map(mv.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+                    mv.strokeWeight(5);
+                    mv.noFill();
+                    mv.lights();
+                    mv.pushMatrix();
+                    //
+                    mv.translate(mv.width/2 -350, mv.height/2, 0);
+                    mv.rotateX(angle);
+                    mv.rotateZ(angle);       
+                    float boxSize = 50 + (200 * mv.getSmoothedAmplitude()); 
+                    mv.box(boxSize);
+                    mv.popMatrix();   
+
+                    //left cube 
+                    mv.stroke(PApplet.map(mv.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+                    mv.strokeWeight(5);
+                    mv.noFill();
+                    mv.lights();
+                    mv.pushMatrix();
+                    //
+                    mv.translate(mv.width/2+350, mv.height/2, 0);
+                    mv.rotateX(angle);
+                    mv.rotateZ(angle);       
+                    mv.box(boxSize);
+                    mv.popMatrix();   
+                    
+                    angle += 0.01f;
+                }
+                
+                
             }
         }//end switch
 
