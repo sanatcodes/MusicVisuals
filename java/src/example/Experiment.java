@@ -8,7 +8,7 @@ public class Experiment {
     MyVisual mv;
     float cy = 0;
     float cw = 0;
-    int which = 4;
+    int which;
 
     public Experiment(MyVisual mv)
     {
@@ -20,7 +20,7 @@ public class Experiment {
 
     public void keyPressed() {
         if (mv.keyCode >= '0' && mv.keyCode <= '6') {
-            which = mv.keyCode - '0';
+            which = mv.keyCode - '1';
         }
         // if (mv.keyCode == ' ') {
         //     if (ap.isPlaying()) {
@@ -79,7 +79,7 @@ public class Experiment {
 
         switch (which)
         {
-            case 0:
+            case 1:
             {
                 //background dots
                 for(int i = 0 ; i < mv.getAudioBuffer().size() ; i ++)
@@ -108,7 +108,7 @@ public class Experiment {
                 break;
             }
             
-            case 1:
+            case 2:
             {
                 mv.strokeWeight(5);
                 int Num_lines = 10;
@@ -133,10 +133,12 @@ public class Experiment {
                 //     // mv.line(x2(t), y2(t), x1(t), y1(t));
                 // }
                 // t += 0.7;
+                break;
             }
-            break;
+            
 
-            case 2: {
+            case 3: {
+                mv.strokeWeight(1);
                 mv.camera(mv.mouseX, mv.height/2, (mv.height/2) / PApplet.tan(PApplet.PI/6), mv.width/2, mv.height/2, 0, 0, 1, 0);
 
                 float dt = 1 * 0.01f;
@@ -175,13 +177,13 @@ public class Experiment {
 
             }
 
-            case 3: 
+            case 5: 
             {
                 mv.translate(mv.width/2, mv.height/2);
                 sun.show();
                 sun.spawnMoons(5);
 
-
+                break;
             }
 
 
@@ -254,8 +256,8 @@ public class Experiment {
                     mv.pushMatrix();
                     //
                     mv.translate(mv.width/2 -350, mv.height/2, 0);
-                    mv.rotateX(angle);
-                    mv.rotateZ(angle);       
+                    // mv.rotateX(angle);
+                    // mv.rotateZ(angle);       
                     float boxSize = 50 + (200 * mv.getSmoothedAmplitude()); 
                     mv.box(boxSize);
                     mv.popMatrix();   
@@ -268,15 +270,15 @@ public class Experiment {
                     mv.pushMatrix();
                     //
                     mv.translate(mv.width/2+350, mv.height/2, 0);
-                    mv.rotateX(angle);
-                    mv.rotateZ(angle);       
+                    // mv.rotateX(angle);
+                    // mv.rotateZ(angle);       
                     mv.box(boxSize);
                     mv.popMatrix();   
                     
                     angle += 0.01f;
                 }
                 
-                
+                break;
             }
         }//end switch
 
