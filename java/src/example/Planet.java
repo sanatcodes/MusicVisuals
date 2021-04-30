@@ -2,19 +2,24 @@ package example;
 
 import processing.core.PApplet;
 
-public class Planet extends PApplet{
+//extend my visuals 
+//use pollymorphism 
+
+public class Planet {
     
     float radius;
     float angle;
     float distance;
     Planet[] planets;
+    MyVisual mv;
 
 
-    Planet(float r, float d)
+    public Planet(float r, float d, MyVisual mv)
     {
         radius = r;
         distance = d;
         angle = 0;
+        this.mv = mv;
     }
 
     void spawnMoons(int total){
@@ -24,15 +29,15 @@ public class Planet extends PApplet{
         {
 
             float r = radius * 0.5f;;
-            float d = random(100,200);
-            planets[i] = new Planet(r, d);
+            float d = mv.random(100,200);
+            planets[i] = new Planet(r, d, mv);
         }
     }
 
     void show()
     {
-        fill(255);
-        ellipse(0,0,radius*2, radius*2);
+        mv.fill(255);
+        mv.ellipse(0,0,radius*2, radius*2);
 
         if(planets != null)
         {

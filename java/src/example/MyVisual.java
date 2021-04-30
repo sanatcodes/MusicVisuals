@@ -11,13 +11,13 @@ public class MyVisual extends Visual
 
     public void settings()
     {
-        // size(1024, 500, P3D);
+        size(1024, 500, P3D);
         
         // Use this to make fullscreen
         //fullScreen();
 
         // Use this to make fullscreen and use P3D for 3D graphics
-        fullScreen(P3D, SPAN); 
+        // fullScreen(P3D, SPAN); 
     }
 
     public void setup()
@@ -41,7 +41,17 @@ public class MyVisual extends Visual
 
     public void keyPressed()
     {
-        
+        if (keyCode >= '0' && keyCode <= '6') {
+            ex.chooseVisual = keyCode - '0';
+        }
+        if (keyCode == ' ') {
+            if (getAudioPlayer().isPlaying()) {
+                getAudioPlayer().pause();
+            } else {
+                getAudioPlayer().rewind();
+                getAudioPlayer().play();
+            }
+        }
     }
 
     public void draw()
@@ -63,7 +73,6 @@ public class MyVisual extends Visual
         calculateAverageAmplitude();        
         // wf.render();
         // abv.render();
-        ex.keyPressed();
         ex.render();
     }
 }
