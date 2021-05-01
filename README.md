@@ -12,12 +12,32 @@ Student Number: D18129674
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
+In this assigment have made 5 distinct visual art pieces which have been synced to music and compliment it creating a coherent and interactive experience for viewers. One of my aspirations for the assigment was to create variety in my visuals to showcase diversity and a unique perspective to shapes and abstract art. However, all visuals are cohesively connected through the music making it an interesting visual experience which is culminated through the power of code.
+
+I'll explain my thoughtprocess and insipration for all of the visuals below wiht pictures for refference
+
+Visual 1:
+
+
+Visual 2:
+
+Visual 3:
+
+Visual 4:
+
+Visual 5:
+
+
 
 # Instructions
 
 # How it works
 
 # What I am most proud of in the assignment
+
+- my learnings of git 
+- complexity of my designs 
+- increased understanding of OOP principals 
 
 # Markdown Tutorial
 
