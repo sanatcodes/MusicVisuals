@@ -18,7 +18,6 @@ I'll explain my thoughtprocess and insipration for all of the visuals below wiht
 
 Visual 1:
 
-
 Visual 2:
 
 Visual 3:
@@ -31,13 +30,51 @@ Visual 5:
 
 # Instructions
 
+Step 1: is to press compile using F5 on VS code
+
+Step 2: Press the space bar to play the music
+
+Step 3: Press buttons from 0 - 4 to cycle through different visuals
+
+Step 4: Hover mouse left to right and right to left in last 2 visuals for a camera pan effect to see them move in 3d 
+
+That's it!
+
 # How it works
+
+There are 6 files which house all of the code necessary for the project to work.I'll list the files below and explain their functions below:
+
+Main.java -> this houses the code to actually run the processing sketch and launch it. That is it's only role it houses the main function. Pretty simple standard stuff!
+
+Visual.java -> This file extends the PApplet Library along with containing instances of the Minim library. It also contains boilerplate methods for calculating amplitude, buffer size, frequency bands and other useful methods that I can choose to use in any of my visuals. It also contains accessor methods to all of the methods above and more.
+
+MyVisual.java -> This file inherits Visual the file mentioned above and houses core processing methods such as Setup, Setting and Draw. Instead of adding these methods in all of the files that we make for visuals we can just those files in this central methods. This is an example displaying the power of abstraction and inheritance in action.
+
+VisualException.java
+
+Experiment.java -> This is the file that actually has code for the visuals that I created which are seprated through a switch case and instance of the MyVisual class is also passed in this class to give it access to the PApplet library.
+
+Planet.java -> This class is created to support one of my Visuals and it also inherits myVisuals in order to access methods from the PApplet library and it is instanciated in the Expirment class where it is being used to create visuals.
 
 # What I am most proud of in the assignment
 
-- my learnings of git 
-- complexity of my designs 
-- increased understanding of OOP principals 
+I have gained a lot of knowledge through this project including solidifying my understanding and knowldge of core principles of OOP. Below I have menitoned somethings that I am most proud of being able to accomplish through this assigment.
+
+## Understanding the correct use of git
+When I started this project I knew in theory how to use git and most basic functionality, but I didn't see it as something important that I would use if I had the option not to. However, after working on something at this scale and complex, I understood the praise behind the use of this magnificent version control software that is the industry standard. I also coded this project using two different machines so github became an indespensible tool and it allowed me to save my progress every step of the way and allowed me to complete this project in an organised and constructive manner.
+
+I also consulted this post [hyperlink](https://chris.beams.io/posts/git-commit/) which helped me understand why is it important to write good informatinve git messages so understand the pourposed behind every commit and what I have accomplished in that version.
+
+## Learning about Music and art 
+
+I never really saw myself as an artistic or music oriented person I have never really been attracted towards learning the intricacies behind the beats of a song or the color in a fine-art piece. However, after spending a lot of time listening to different kinds of music and watching a lot of digital art, I can see behind the filters into the details and really observe what makes them beautiful and worth the time and effort people put into making them. In short making this project made me see the culture behind art and music and helped me appreciate it. I scavaged spotify and youtube looking at processing tutorials and songs that would fit the visuals I was trying to make.
+
+## Increased understanding of OOP principals 
+
+We did learn about all OOP principles in first semester with Bianca and in my openion at the time I had understood them in concept. However, I couldn't really see their application in practice as it just seemed like extra effort and unecessary. The reason was because we were only making simple things in labs that didn't require the use of encapsulation or polymorphism. However, with this project and the YASC game for that matter I could really see why OOP shines in bigger prjects where the techniques taught can potentially save thousands of lines of code. This project helped solidify my understanding of inheritance, encapsulation, abstraction and polymorphism through practice.
+
+## Working in 3D 
+
 
 # Markdown Tutorial
 
