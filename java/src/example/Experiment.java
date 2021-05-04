@@ -14,17 +14,7 @@ public class Experiment {
     float cw = 0;
     int chooseVisual;
 
-   
-    
 
-    public Experiment(MyVisual mv)
-    {
-        this.mv = mv;
-        cy = this.mv.height / 2;
-        cw = this.mv.width / 2;
-        
-    }
-        
     //variables for visual 2
     float t = 0;
 
@@ -62,13 +52,22 @@ public class Experiment {
     ArrayList<PVector> points = new ArrayList<PVector>();
     // cam = new PeasyCam(this, 500);
 
-    Planet sun = new Planet(100,0, mv);
+    Planet sun; 
 
     //variales for 4th visual
 
     float sphereSize;
     boolean showCube = false;
     float angle = 0;
+
+    public Experiment(MyVisual mv)
+    {
+        this.mv = mv;
+        cy = this.mv.height / 2;
+        cw = this.mv.width / 2;
+        sun = new Planet(50,0, mv,0);
+        
+    }
 
     public void render()
     {
@@ -150,19 +149,23 @@ public class Experiment {
                 float dx = (a * (y - x)) * dt;
                 float dy = (x * (b - z) - y) * dt;
                 float dz = (x * y - c * z) * dt;
-
+                float musicAmp = mv.getSmoothedAmplitude();
+                float temp = 4;
                 x = x + dx;
                 y = y + dy;
                 z = z + dz;
 
                 // mv.camera(0, 0, (mv.height/2) / (PApplet.tan(PApplet.PI/6)), 0, 0, 0, 0, 1, 0);
-
+                mv.pushMatrix();
                 points.add(new PVector(x, y, z));
 
                 mv.translate(mv.width/2, mv.height/2);
-                mv.scale(4);
-                mv.stroke(255);
+                mv.scale(temp);
+                // mv.stroke(255);
                 mv.noFill();
+
+                PApplet.println(musicAmp);
+
 
                 // for loop to identify current amp
                 // for(int i = 0 ; i < (mv.getAudioBuffer().size()); i++)
@@ -173,26 +176,32 @@ public class Experiment {
                 // }
 
                 float color = 0;
-                for(int i = 0; i < (mv.getAudioBuffer().size()); i++)
-                {
+                // for(int i = 0; i < (mv.getAudioBuffer().size()); i++)
+                // {
                     mv.beginShape();
                     for(PVector v : points)
                     {   
-                        float musicAmp = mv.getAudioBuffer().get(i);
-                        // current.set(temp.add(v));
-                        mv.stroke((color % 255),255,255);
-                        mv.vertex(v.x, v.y, v.z);
-                        color += 1;
-                        PVector offset = new PVector(musicAmp,musicAmp, musicAmp);
-                        offset.mult(0.001f);
-                        v.add(offset);
-                        // mv.rotateY(angle);
-                        // mv.rotateX(angle);
+                        if(musicAmp > 0.2 && musicAmp < 0.23 )
+                        {
+                            mv.noStroke();
+                        }
+                        else{
+                            // current.set(temp.add(v));
+                            mv.stroke((color % 255),255,255);
+                            mv.vertex(v.x, v.y, v.z);
+                            color += 1;
+                            // PVector offset = new PVector(0,musicAmp,musicAmp);
+                            // offset.mult(0.001f);
+                            // v.add(offset);
+                        }
+                        
         
                     }
                     // angle += 0.1f;
                     mv.endShape();
-                }
+
+                    mv.popMatrix();
+                // }
                 break;
 
 
@@ -296,7 +305,7 @@ public class Experiment {
             {
                 mv.translate(mv.width/2, mv.height/2);
                 sun.show();
-                sun.spawnMoons(5);
+                sun.orbit();
 
                 break;
             }

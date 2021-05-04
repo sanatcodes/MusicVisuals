@@ -25,7 +25,7 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("heroplanet.mp3");  
+        loadAudio("Laszlo.mp3");  
         colorMode(HSB); 
 
         
@@ -35,6 +35,7 @@ public class MyVisual extends Visual
         // wf = new WaveForm(this);
         // abv = new AudioBandsVisual(this);
         ex = new Experiment(this);
+        ex.sun.spawnMoons(5);
 
         // background(0);
     }
