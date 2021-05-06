@@ -17,9 +17,13 @@ public abstract class Visual extends PApplet
 	private AudioPlayer ap;
 	private AudioBuffer ab;
 	private FFT fft;
+	
 
 	private float amplitude  = 0;
 	private float smothedAmplitude = 0;
+	private float average;
+	private float sum;
+	private float lerpedAverage;
 
 	
 	
@@ -33,6 +37,7 @@ public abstract class Visual extends PApplet
   		smoothedBands = new float[bands.length];
 
 	}
+
 
 	float log2(float f) {
 		return log(f) / log(2.0f);
@@ -49,6 +54,13 @@ public abstract class Visual extends PApplet
 		{
 			throw new VisualException("You must call startListening or loadAudio before calling fft");
 		}
+	}
+
+	public void calculateAverageOfBuffer(){
+		for (int i = 0; i < ab.size(); i ++)
+        {
+            sum += abs(ab.get(i));
+        }
 	}
 
 	
@@ -93,6 +105,18 @@ public abstract class Visual extends PApplet
 
 	public int getFrameSize() {
 		return frameSize;
+	}
+	
+	public float getAverage(){
+		average = sum / ab.size();
+		return average;
+	}
+
+	public float getLerpedAverage(){
+
+		lerpedAverage = lerp(lerpedAverage,average,0.1f);
+
+		return lerpedAverage;
 	}
 
 	public void setFrameSize(int frameSize) {

@@ -6,16 +6,18 @@ public class MyVisual extends Visual
 {    
     WaveForm wf;
     AudioBandsVisual abv;
+    Experiment ex;
+    int which;
 
     public void settings()
     {
-        size(1024, 500);
+        size(1024, 500, P3D);
         
         // Use this to make fullscreen
         //fullScreen();
 
         // Use this to make fullscreen and use P3D for 3D graphics
-        //fullScreen(P3D, SPAN); 
+        // fullScreen(P3D, SPAN); 
     }
 
     public void setup()
@@ -23,22 +25,33 @@ public class MyVisual extends Visual
         startMinim();
                 
         // Call loadAudio to load an audio file to process 
-        loadAudio("heroplanet.mp3");   
+        loadAudio("Laszlo.mp3");  
+        colorMode(HSB); 
 
         
         // Call this instead to read audio from the microphone
         //startListening(); 
         
-        wf = new WaveForm(this);
-        abv = new AudioBandsVisual(this);
+        // wf = new WaveForm(this);
+        // abv = new AudioBandsVisual(this);
+        ex = new Experiment(this);
+        ex.sun.spawnMoons(5);
+
+        // background(0);
     }
 
     public void keyPressed()
     {
-        if (key == ' ')
-        {
-            getAudioPlayer().cue(0);
-            getAudioPlayer().play();
+        if (keyCode >= '0' && keyCode <= '6') {
+            ex.chooseVisual = keyCode - '0';
+        }
+        if (keyCode == ' ') {
+            if (getAudioPlayer().isPlaying()) {
+                getAudioPlayer().pause();
+            } else {
+                getAudioPlayer().rewind();
+                getAudioPlayer().play();
+            }
         }
     }
 
@@ -59,7 +72,8 @@ public class MyVisual extends Visual
 
         // Call this is you want to get the average amplitude
         calculateAverageAmplitude();        
-        wf.render();
-        abv.render();
+        // wf.render();
+        // abv.render();
+        ex.render();
     }
 }
