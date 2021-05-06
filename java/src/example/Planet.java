@@ -12,6 +12,7 @@ public class Planet {
     float distance;
     Planet[] planets;
     float orbitSpeed;
+    
     MyVisual mv;
 
 
@@ -21,7 +22,8 @@ public class Planet {
         distance = d;
         orbitSpeed = o;
         angle = mv.random(PApplet.TWO_PI);
-        orbitSpeed = mv.random(0.1f,0.3f);
+        orbitSpeed = mv.random(0.01f,0.1f);
+        
         this.mv = mv;
     }
 
@@ -30,10 +32,12 @@ public class Planet {
         planets = new Planet[total];
         for(int i=0; i< planets.length; i++)
         {
-
-            float r = radius * 0.3f;;
-            float d = mv.random(75,150);
+            
+            
+            float r = radius * 0.3f;
+            float d = mv.random(100,250);
             float o = mv.random(0.02f,0.1f);
+            
             planets[i] = new Planet(r, d, mv, o);
         }
     }
@@ -54,10 +58,12 @@ public class Planet {
     {   
         mv.pushMatrix();
         mv.noStroke();
-        mv.fill(255,100);
+        mv.fill((mv.getSmoothedAmplitude()*1000) % 255);
+        // PApplet.println(PApplet.map(mv.getSmoothedAmplitude()*1000, 0, mv.getAudioBuffer().size(), 0, 255));
         mv.rotate(angle);
         mv.translate(distance, 0);
-        mv.sphere(r);
+        mv.sphere(radius);
+        // float offset = PApplet.map(mv.getSmoothedAmplitude(), 0, mv.getAudioBuffer().size(), 1, 5);
         // mv.ellipse(0,0,radius*2, radius*2);
 
         if(planets != null)
@@ -65,6 +71,7 @@ public class Planet {
            
             for(int i=0; i< planets.length; i++)
             {
+                // planets[i].radius = planets  [i].radius * offset;
                 planets[i].show();
             }
 
