@@ -4,8 +4,7 @@ Name: Sanat Thukral
 
 Student Number: D18129674
 
-### Link to the projects YT Video 
-[hyperlink](https://youtu.be/ZHcH4J0SshU)
+[Link to the projects YT Video ](https://youtu.be/ZHcH4J0SshU)
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -19,18 +18,23 @@ In this assigment have made 5 distinct visual art pieces which have been synced 
 
 I'll explain my thoughtprocess and insipration for all of the visuals below wiht pictures for refference
 
-##Visual 1: ![Visual 1 ](https://user-images.githubusercontent.com/51191924/117230589-55164080-ae15-11eb-9b77-22583c247a60.png)
+##Visual 1: 
+![Visual 1 ](https://user-images.githubusercontent.com/51191924/117230589-55164080-ae15-11eb-9b77-22583c247a60.png)
 
-##Visual 2:![Visual 2](https://user-images.githubusercontent.com/51191924/117230595-5b0c2180-ae15-11eb-9357-06ad22e64c63.png)
-
-
-##Visual 3:![Visual 3](https://user-images.githubusercontent.com/51191924/117230608-619a9900-ae15-11eb-9930-84d09c5a2d37.png)
-
-
-##Visual 4:![Visual 4](https://user-images.githubusercontent.com/51191924/117230605-5f383f00-ae15-11eb-8fa1-8acd4f871a6f.png)
+##Visual 2:
+![Visual 2](https://user-images.githubusercontent.com/51191924/117230595-5b0c2180-ae15-11eb-9357-06ad22e64c63.png)
 
 
-##Visual 5:![Visual 5](https://user-images.githubusercontent.com/51191924/117230616-64958980-ae15-11eb-972e-45b6f4179d4f.png)
+##Visual 3:
+![Visual 3](https://user-images.githubusercontent.com/51191924/117230608-619a9900-ae15-11eb-9930-84d09c5a2d37.png)
+
+
+##Visual 4:
+![Visual 4](https://user-images.githubusercontent.com/51191924/117230605-5f383f00-ae15-11eb-8fa1-8acd4f871a6f.png)
+
+
+##Visual 5:
+![Visual 5](https://user-images.githubusercontent.com/51191924/117230616-64958980-ae15-11eb-972e-45b6f4179d4f.png)
 
 
 
@@ -70,7 +74,7 @@ I have gained a lot of knowledge through this project including solidifying my u
 ## Understanding the correct use of git
 When I started this project I knew in theory how to use git and most basic functionality, but I didn't see it as something important that I would use if I had the option not to. However, after working on something at this scale and complex, I understood the praise behind the use of this magnificent version control software that is the industry standard. I also coded this project using two different machines so github became an indespensible tool and it allowed me to save my progress every step of the way and allowed me to complete this project in an organised and constructive manner.
 
-I also consulted this post [hyperlink](https://chris.beams.io/posts/git-commit/) which helped me understand why is it important to write good informatinve git messages so understand the pourposed behind every commit and what I have accomplished in that version.
+I also consulted this post [Link to post](https://chris.beams.io/posts/git-commit/) which helped me understand why is it important to write good informatinve git messages so understand the pourposed behind every commit and what I have accomplished in that version.
 
 ## Learning about Music and art 
 
