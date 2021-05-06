@@ -11,7 +11,7 @@ public class MyVisual extends Visual
 
     public void settings()
     {
-        size(1024, 500, P3D);
+        size(1920, 1080, P3D);
         
         // Use this to make fullscreen
         //fullScreen();

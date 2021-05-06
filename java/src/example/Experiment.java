@@ -110,10 +110,47 @@ public class Experiment {
             
             case 1:
             {
+                mv.camera(mv.mouseX, mv.height/2, (mv.height/2) / PApplet.tan(PApplet.PI/6), mv.width/2, mv.height/2, 0, 0, 1, 0);
                 mv.strokeWeight(5);
                 // int Num_lines = 10;
                 mv.colorMode(PApplet.HSB);
-                int temp;
+                float temp = mv.getSmoothedAmplitude();
+                float offset = (temp * 100) % 2;
+                if(offset <= 0)
+                {
+                    offset = 1;
+                }
+                // PApplet.println(offset);
+                mv.pushMatrix();
+
+                mv.translate(mv.width/2, 100);
+                mv.rotateX(PApplet.PI/2);
+                mv.rotateZ(-PApplet.PI/6);
+                //square
+                mv.beginShape();
+                mv.vertex( 150 * offset, -150 * offset, -150);
+                mv.vertex( 150 * offset, 150 * offset, -150 );
+                mv.vertex(-150 * offset, 150 * offset, -150 );
+                mv.vertex(-150 * offset,  150 * offset, -150 );
+                mv.vertex(-150 * offset, -150 * offset, -150 );
+                mv.vertex(150 * offset, -150 * offset, -150 );        
+                mv.endShape();
+
+                mv.translate(0,0,-550);
+                // mv.rotateX(PApplet.PI/2);
+                // mv.rotateZ(-PApplet.PI/6);
+                //square
+                mv.beginShape();
+                mv.vertex( 150 * offset, -150 * offset, -150);
+                mv.vertex( 150 * offset, 150 * offset, -150 );
+                mv.vertex(-150 * offset, 150 * offset, -150 );
+                mv.vertex(-150 * offset,  150 * offset, -150 );
+                mv.vertex(-150 * offset, -150 * offset, -150 );
+                mv.vertex(150 * offset, -150 * offset, -150 );        
+                mv.endShape();
+
+                mv.popMatrix();
+                //end square
 
                 mv.translate(mv.width / 2, mv.height / 2);
 
@@ -130,11 +167,7 @@ public class Experiment {
                 }
                 t += 0.7;
                 
-                // for(int i = 0; i < Num_lines; i++){
-                //     mv.line(x1(t + i), y1(t + i), x2(t + i), y2(t + i));
-                //     // mv.line(x2(t), y2(t), x1(t), y1(t));
-                // }
-                // t += 0.7;
+
                 break;
             }
             
@@ -150,7 +183,7 @@ public class Experiment {
                 float dy = (x * (b - z) - y) * dt;
                 float dz = (x * y - c * z) * dt;
                 float musicAmp = mv.getSmoothedAmplitude();
-                float temp = 4;
+                float temp = 6;
                 x = x + dx;
                 y = y + dy;
                 z = z + dz;
@@ -164,7 +197,7 @@ public class Experiment {
                 // mv.stroke(255);
                 mv.noFill();
 
-                PApplet.println(musicAmp);
+                // PApplet.println(musicAmp);
 
 
                 // for loop to identify current amp
@@ -256,7 +289,6 @@ public class Experiment {
                     if(mv.getAudioBuffer().get(i) > 0.15)
                     {
                         showCube = true;
-                        // PApplet.println(mv.getAudioBuffer().get(i));
                     }
                     else
                     {
@@ -302,7 +334,9 @@ public class Experiment {
             }
 
             case 4: 
-            {
+            {   mv.colorMode(PApplet.HSB);
+                mv.camera(mv.mouseX, mv.height/2, (mv.height/2) / PApplet.tan(PApplet.PI/6), mv.width/2, mv.height/2, 0, 0, 1, 0);
+                mv.lights();
                 mv.translate(mv.width/2, mv.height/2);
                 sun.show();
                 sun.orbit();
