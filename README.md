@@ -4,6 +4,9 @@ Name: Sanat Thukral
 
 Student Number: D18129674
 
+### Link to the projects YT Video 
+[hyperlink](https://youtu.be/ZHcH4J0SshU)
+
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
 - Create a new package named your student number and put all your code in this package.
@@ -16,15 +19,19 @@ In this assigment have made 5 distinct visual art pieces which have been synced 
 
 I'll explain my thoughtprocess and insipration for all of the visuals below wiht pictures for refference
 
-Visual 1:
+##Visual 1: ![Visual 1 ](https://user-images.githubusercontent.com/51191924/117230589-55164080-ae15-11eb-9b77-22583c247a60.png)
 
-Visual 2:
+##Visual 2:![Visual 2](https://user-images.githubusercontent.com/51191924/117230595-5b0c2180-ae15-11eb-9357-06ad22e64c63.png)
 
-Visual 3:
 
-Visual 4:
+##Visual 3:![Visual 3](https://user-images.githubusercontent.com/51191924/117230608-619a9900-ae15-11eb-9930-84d09c5a2d37.png)
 
-Visual 5:
+
+##Visual 4:![Visual 4](https://user-images.githubusercontent.com/51191924/117230605-5f383f00-ae15-11eb-8fa1-8acd4f871a6f.png)
+
+
+##Visual 5:![Visual 5](https://user-images.githubusercontent.com/51191924/117230616-64958980-ae15-11eb-972e-45b6f4179d4f.png)
+
 
 
 
@@ -74,6 +81,7 @@ I never really saw myself as an artistic or music oriented person I have never r
 We did learn about all OOP principles in first semester with Bianca and in my openion at the time I had understood them in concept. However, I couldn't really see their application in practice as it just seemed like extra effort and unecessary. The reason was because we were only making simple things in labs that didn't require the use of encapsulation or polymorphism. However, with this project and the YASC game for that matter I could really see why OOP shines in bigger prjects where the techniques taught can potentially save thousands of lines of code. This project helped solidify my understanding of inheritance, encapsulation, abstraction and polymorphism through practice.
 
 ## Working in 3D 
+
 
 
 # Markdown Tutorial
